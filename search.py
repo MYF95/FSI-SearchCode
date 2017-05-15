@@ -115,8 +115,23 @@ def depth_first_tree_search(problem):
     """Search the deepest nodes in the search tree first. [p 74]"""
     return tree_search(problem, Stack())
 
-
 def graph_search(problem, fringe):
+    """Search through the successors of a problem to find a goal.
+    The argument fringe should be an empty queue.
+    If two paths reach a state, only use the best one. [Fig. 3.18]"""
+    closed = {}
+    fringe.append(Node(problem.initial))
+    while fringe:
+        node = fringe.pop()
+        if problem.goal_test(node.state):
+            print fringe.ext
+            return node
+        if node.state not in closed:
+            closed[node.state] = True
+        fringe.extend(node.expand(problem))
+    return None
+
+def graph_search_own(problem, fringe):
     """Search through the successors of a problem to find a goal.
     The argument fringe should be an empty queue.
     If two paths reach a state, only use the best one. [Fig. 3.18]"""
@@ -132,11 +147,17 @@ def graph_search(problem, fringe):
         fringe.extend(node.expand(problem))
     return None
 
-def sinHeuristica(problem):
+def anchura(problem):
     return graph_search(problem, OwnStack())
 
+#def profundidad(problem):
+    #return graph_search(problem, Stack())
+
+def sinHeuristica(problem):
+    return graph_search_own(problem, OwnStack())
+
 def conHeuristica(problem):
-    return graph_search(problem, OwnStackHeuristica(problem))
+    return graph_search_own(problem, OwnStackHeuristica(problem))
 
 def breadth_first_graph_search(problem):
     """Search the shallowest nodes in the search tree first. [p 74]"""

@@ -3,19 +3,32 @@
 import search
 
 ab = search.GPSProblem('A', 'B', search.romania)
+lh = search.GPSProblem('L', 'H', search.romania)
+no = search.GPSProblem('N', 'O', search.romania)
+gz = search.GPSProblem('G', 'Z', search.romania)
+ca = search.GPSProblem('C', 'A', search.romania)
 
-
-#print search.breadth_first_graph_search(ab).path()
-#print search.depth_first_graph_search(ab).path()
 
 print search.sinHeuristica(ab).path()
 print search.conHeuristica(ab).path()
 
-#print search.iterative_deepening_search(ab).path()
-#print search.depth_limited_search(ab).path()
+print "--------------------------------------------"
 
-#print search.astar_search(ab).path()
+print search.sinHeuristica(lh).path()
+print search.conHeuristica(lh).path()
 
-# Result:
-# [<Node B>, <Node P>, <Node R>, <Node S>, <Node A>] : 101 + 97 + 80 + 140 = 418
-# [<Node B>, <Node F>, <Node S>, <Node A>] : 211 + 99 + 140 = 450
+print "--------------------------------------------"
+
+print search.sinHeuristica(no).path()
+print search.conHeuristica(no).path()
+
+print "--------------------------------------------"
+
+print search.sinHeuristica(gz).path()
+print search.conHeuristica(gz).path()
+
+print "--------------------------------------------"
+
+print search.sinHeuristica(ca).path()
+print search.conHeuristica(ca).path()
+
